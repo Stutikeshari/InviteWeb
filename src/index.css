@@ -1,0 +1,112 @@
+/* =============================================
+   GLOBAL CSS VARIABLES & RESET
+   ============================================= */
+:root {
+  --burgundy: #350B18;
+  --wine: #641B2D;
+  --blush: #F8E6E2;
+  --ivory: #FFF7EF;
+  --rose-gold: #D6A85F;
+  --rose-gold-light: #E8C98A;
+  --rose-gold-dark: #B8893F;
+  --text-dark: #2A0A12;
+  --text-medium: #5C1A2A;
+  --text-light: #8B4A5A;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Montserrat', sans-serif;
+
+  --shadow-gold: 0 4px 30px rgba(214, 168, 95, 0.3);
+  --shadow-warm: 0 8px 40px rgba(53, 11, 24, 0.2);
+  --glow-gold: 0 0 20px rgba(214, 168, 95, 0.4), 0 0 60px rgba(214, 168, 95, 0.15);
+
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--burgundy);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* =============================================
+   UTILITY CLASSES
+   ============================================= */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* =============================================
+   SCROLLBAR STYLING
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--burgundy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rose-gold);
+  border-radius: 3px;
+}

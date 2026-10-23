@@ -1,0 +1,262 @@
+/* =============================================
+   BLESSINGS FORM SECTION
+   ============================================= */
+.blessings-section {
+  min-height: 80dvh;
+  background: linear-gradient(160deg, var(--burgundy) 0%, #4a1020 60%, #1a0509 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.blessings-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(214, 168, 95, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 90% 50%, rgba(248, 230, 226, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.blessings-heading-group {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  z-index: 2;
+}
+
+.blessings-pre-label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  opacity: 0.8;
+  margin-bottom: 0.6rem;
+}
+
+.blessings-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: 0.03em;
+}
+
+.blessings-subtext {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  color: var(--rose-gold-light);
+  margin-top: 0.5rem;
+  opacity: 0.75;
+}
+
+/* Form card */
+.blessings-form-card {
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(74, 16, 32, 0.8) 0%, rgba(42, 8, 18, 0.9) 100%);
+  border: 1px solid rgba(214, 168, 95, 0.3);
+  border-radius: 4px;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(214, 168, 95, 0.1),
+    inset 0 0 60px rgba(214, 168, 95, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+/* Double border */
+.blessings-form-card::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(214, 168, 95, 0.12);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Form layout */
+.blessings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-gold-light);
+}
+
+.form-label .required-star {
+  color: #e07b9a;
+  margin-left: 2px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(255, 247, 239, 0.06);
+  border: 1px solid rgba(214, 168, 95, 0.25);
+  border-radius: 4px;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: var(--ivory);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  outline: none;
+  resize: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(248, 230, 226, 0.3);
+  font-style: italic;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(214, 168, 95, 0.6);
+  box-shadow: 0 0 0 3px rgba(214, 168, 95, 0.12), 0 0 20px rgba(214, 168, 95, 0.1);
+  background: rgba(255, 247, 239, 0.09);
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: rgba(220, 100, 130, 0.6);
+  box-shadow: 0 0 0 3px rgba(220, 100, 130, 0.1);
+}
+
+.form-error-msg {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: #e07b9a;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.form-textarea {
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* EmailJS notice */
+.emailjs-notice {
+  background: rgba(214, 168, 95, 0.08);
+  border: 1px solid rgba(214, 168, 95, 0.2);
+  border-radius: 4px;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: rgba(232, 201, 138, 0.75);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+
+.emailjs-notice a {
+  color: var(--rose-gold-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Submit button */
+.submit-btn {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-dark));
+  color: var(--burgundy);
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: var(--shadow-gold);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(214, 168, 95, 0.45);
+  background: linear-gradient(135deg, var(--rose-gold-light), var(--rose-gold));
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--rose-gold-light);
+  outline-offset: 4px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* States */
+.form-status {
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.form-status.success {
+  background: rgba(80, 160, 100, 0.12);
+  border: 1px solid rgba(80, 200, 120, 0.3);
+  color: #7de8a0;
+}
+
+.form-status.error {
+  background: rgba(200, 60, 80, 0.12);
+  border: 1px solid rgba(220, 100, 130, 0.3);
+  color: #e07b9a;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(53, 11, 24, 0.3);
+  border-top-color: var(--burgundy);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
