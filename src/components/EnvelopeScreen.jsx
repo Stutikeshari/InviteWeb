@@ -1,6 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import './EnvelopeScreen.css';
+import { motion } from 'framer-motion';
 
 /* ── Particle canvas (golden dust + petals) ── */
 function ParticleCanvas() {
@@ -68,26 +67,27 @@ function ParticleCanvas() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="particle-canvas" aria-hidden="true" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" aria-hidden="true" />;
 }
 
 /* ── Floating Hearts ── */
 const HEART_POSITIONS = [8, 20, 35, 52, 65, 78, 88];
 const HEART_DELAYS = [0, 2.5, 5, 1.5, 7, 3.5, 9];
 const HEART_DURATIONS = [12, 15, 11, 14, 13, 16, 10];
+const HEART_SIZES = ['0.85rem', '1.1rem', '0.75rem', '1.05rem', '0.9rem', '1.15rem', '0.8rem'];
 
 function FloatingHearts() {
   return (
-    <div className="floating-hearts" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
       {HEART_POSITIONS.map((left, i) => (
         <span
           key={i}
-          className="heart-particle"
+          className="absolute -bottom-5 opacity-0 animate-float-heart"
           style={{
             left: `${left}%`,
             animationDuration: `${HEART_DURATIONS[i]}s`,
             animationDelay: `${HEART_DELAYS[i]}s`,
-            fontSize: `${Math.random() * 0.5 + 0.7}rem`,
+            fontSize: HEART_SIZES[i],
           }}
         >
           ♥
@@ -102,7 +102,7 @@ function EnvelopeSVG() {
   return (
     <svg
       viewBox="0 0 380 270"
-      className="envelope-svg"
+      className="w-full h-full overflow-visible"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -173,20 +173,23 @@ export default function EnvelopeScreen({ onOpen }) {
 
   return (
     <motion.div
-      className="envelope-screen"
+      className="min-h-[100dvh] bg-[radial-gradient(ellipse_at_center_top,_#4a1020_0%,_#350B18_40%,_#1a0509_100%)] flex flex-col items-center justify-center relative overflow-hidden p-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="envelope-bg-pattern" aria-hidden="true" />
+      <div
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,_rgba(214,168,95,0.05)_0%,_transparent_50%),radial-gradient(circle_at_80%_80%,_rgba(214,168,95,0.05)_0%,_transparent_50%)]"
+        aria-hidden="true"
+      />
       <ParticleCanvas />
       <FloatingHearts />
 
-      <div className="envelope-content">
+      <div className="flex flex-col items-center gap-8 z-10 text-center">
         {/* Pre-text */}
         <motion.p
-          className="envelope-pre-text"
+          className="font-sans text-[clamp(0.75rem,2vw,0.9rem)] font-normal tracking-[0.35em] uppercase text-rose-gold opacity-90"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -196,7 +199,7 @@ export default function EnvelopeScreen({ onOpen }) {
 
         {/* Envelope */}
         <motion.div
-          className="envelope-wrapper"
+          className="relative w-[clamp(240px,50vw,380px)] aspect-[1.4/1] cursor-pointer drop-shadow-[0_20px_60px_rgba(214,168,95,0.25)] hover:drop-shadow-[0_24px_80px_rgba(214,168,95,0.4)] transition-[filter] duration-400 focus-visible:outline-2 focus-visible:outline-rose-gold focus-visible:outline-offset-8 rounded"
           role="button"
           tabIndex={0}
           aria-label="Click to open your engagement invitation"
@@ -209,24 +212,29 @@ export default function EnvelopeScreen({ onOpen }) {
           whileTap={{ scale: 0.98 }}
         >
           <EnvelopeSVG />
-          <div className="wax-seal" aria-hidden="true">
-            <span className="wax-seal-text">R&amp;S</span>
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[35%] w-[clamp(60px,14vw,90px)] h-[clamp(60px,14vw,90px)] bg-[radial-gradient(circle_at_35%_35%,_#c0392b,_#8B1A1A)] rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_2px_6px_rgba(255,255,255,0.15),0_0_0_3px_rgba(214,168,95,0.4)] z-5 pointer-events-none"
+            aria-hidden="true"
+          >
+            <span className="font-script text-rose-gold-light text-[clamp(1rem,3vw,1.5rem)] [text-shadow:0_1px_3px_rgba(0,0,0,0.5)] tracking-[0.02em]">
+              K &amp; S
+            </span>
           </div>
         </motion.div>
 
         {/* Italic label */}
         <motion.p
-          className="envelope-label"
+          className="font-serif italic text-[clamp(1.1rem,3vw,1.5rem)] text-rose-gold-light tracking-[0.05em]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          "For someone dear to our hearts…"
+          "A Tale of Two Hearts, Written in Destiny…"
         </motion.p>
 
         {/* CTA button */}
         <motion.button
-          className="open-btn"
+          className="group relative px-10 py-3.5 bg-gradient-to-br from-rose-gold to-rose-gold-dark text-burgundy font-sans text-[clamp(0.75rem,2vw,0.85rem)] font-semibold tracking-[0.2em] uppercase rounded-full shadow-gold hover:shadow-[0_8px_40px_rgba(214,168,95,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-400 border border-white/20 overflow-hidden focus-visible:outline-2 focus-visible:outline-rose-gold-light focus-visible:outline-offset-4 cursor-pointer"
           onClick={handleClick}
           aria-label="Open the invitation"
           initial={{ opacity: 0, y: 20 }}
@@ -235,7 +243,8 @@ export default function EnvelopeScreen({ onOpen }) {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
         >
-          <span>✦ Click to Open ✦</span>
+          <span className="absolute inset-0 bg-gradient-to-br from-rose-gold-light to-rose-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full pointer-events-none" />
+          <span className="relative z-10">✦ Click to Open ✦</span>
         </motion.button>
       </div>
     </motion.div>

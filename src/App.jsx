@@ -6,8 +6,7 @@ import ScratchCard from './components/ScratchCard';
 import VenueSection from './components/VenueSection';
 import BlessingsForm from './components/BlessingsForm';
 import Footer, { MusicButton } from './components/Footer';
-import './index.css';
-import './App.css';
+import MeetTheCoupleSection from './components/MeetCouple';
 
 /* Cinematic page reveal variants */
 const pageReveal = {
@@ -34,7 +33,10 @@ export default function App() {
   return (
     <>
       {/* Accessibility: Skip to main content */}
-      <a href="#invitation" className="skip-link">
+      <a
+        href="#invitation"
+        className="absolute -top-full left-4 focus:top-4 bg-rose-gold text-burgundy px-4 py-2 font-sans text-sm font-semibold rounded z-[9999] transition-[top] duration-200 no-underline"
+      >
         Skip to invitation
       </a>
 
@@ -44,27 +46,31 @@ export default function App() {
         ) : (
           <motion.main
             key="invitation"
-            className="invitation-wrapper"
+            className="relative bg-ivory"
             variants={pageReveal}
             initial="hidden"
             animate="visible"
             id="main-content"
-            aria-label="Ram and Sita engagement invitation"
+            aria-label="Kunal and Stuti engagement invitation"
           >
             {/* 1. Invitation */}
             <InvitationSection />
 
-            <div className="section-divider" aria-hidden="true" />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-rose-gold to-transparent opacity-40" aria-hidden="true" />
+
+            {/* Meet couple */}
+            <MeetTheCoupleSection />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-rose-gold to-transparent opacity-40" aria-hidden="true" />
 
             {/* 2. Scratch Card */}
             <ScratchCard />
 
-            <div className="section-divider" aria-hidden="true" />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-rose-gold to-transparent opacity-40" aria-hidden="true" />
 
             {/* 3. Venue */}
             <VenueSection />
 
-            <div className="section-divider" aria-hidden="true" />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-rose-gold to-transparent opacity-40" aria-hidden="true" />
 
             {/* 4. Blessings Form */}
             <BlessingsForm />
