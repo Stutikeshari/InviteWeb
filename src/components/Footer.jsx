@@ -225,10 +225,10 @@ export default function Footer() {
         {/* Bottom line */}
         <motion.div
           variants={item}
-          className="mt-10 sm:mt-12 pt-5 w-full max-w-sm border-t flex items-center justify-center gap-2 font-sans text-[0.6rem] sm:text-[0.68rem] tracking-[0.22em] uppercase opacity-60"
+          className="mt-10 sm:mt-12 pt-5 w-full max-w-sm border-t flex items-center justify-center gap-2 font-sans text-[0.5rem] sm:text-[0.68rem] tracking-[0.22em] uppercase opacity-60"
           style={{ borderColor: 'rgba(214,168,95,0.2)', color: GOLD }}
         >
-          <span>Made by Stuti with love</span>
+          <span>Made by Stuti with</span>
           <Heart size={18} fill="currentColor" aria-hidden="true" />
           <span>for our families &amp; friends</span>
         </motion.div>

@@ -78,7 +78,7 @@ export default function InvitationSection() {
         <motion.img
           src="/logo/LordGanesha.png"
           alt="Lord Ganesha"
-          className="w-16 sm:w-20 md:w-24 h-auto object-contain mb-5 sm:mb-6 drop-shadow-[0_0_18px_rgba(232,200,138,0.35)]"
+          className="w-18 sm:w-20 md:w-24 h-auto object-contain mb-5 sm:mb-6 drop-shadow-[0_0_18px_rgba(232,200,138,0.35)]"
           custom={0}
           variants={fadeUp}
           initial="hidden"
@@ -108,21 +108,43 @@ export default function InvitationSection() {
         </motion.p>
 
         {/* Names */}
-        <motion.h1
-          id="invitation-heading"
-          className="font-script leading-[1.05] flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-3 md:gap-5 text-[clamp(3.6rem,15vw,8rem)] [text-shadow:0_4px_30px_rgba(232,200,138,0.25)]"
-          style={{ color: GOLD_SOFT }}
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <span>Kunal</span>
-          <span className="text-[0.45em] sm:text-[0.5em] sm:self-end sm:pb-[0.35em]" style={{ color: GOLD }}>
-            &amp;
-          </span>
-          <span>Stuti</span>
-        </motion.h1>
+{/* Couple Names Animation */}
+<motion.h1
+  id="invitation-heading"
+  className="font-script mt-2 leading-[1.05] flex flex-row flex-nowrap items-center justify-center gap-4 sm:gap-3 md:gap-5 text-[clamp(4rem,12vw,10rem)] whitespace-nowrap [text-shadow:0_4px_30px_rgba(232,200,138,0.25)]"
+  style={{ color: GOLD_SOFT }}
+  initial="hidden"
+  animate="visible"
+>
+  {/* Kunal enters from the left */}
+  <motion.span
+    initial={{ opacity: 0, x: -150 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+  >
+    Kunal
+  </motion.span>
+
+  {/* Ampersand in the center */}
+  <motion.span
+    className="text-[0.5em] shrink-0"
+    style={{ color: GOLD }}
+    initial={{ opacity: 0, scale: 0.3, rotate: -90 }}
+    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+    transition={{ duration: 0.7, ease: "backOut", delay: 0.9 }}
+  >
+    &amp;
+  </motion.span>
+
+  {/* Stuti enters from the right */}
+  <motion.span
+    initial={{ opacity: 0, x: 150 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+  >
+    Stuti
+  </motion.span>
+</motion.h1>
 
         {/* Divider */}
         <motion.div
